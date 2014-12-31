@@ -1,0 +1,54 @@
+Spring Boot
+
+🍺サイト
+Spring Bootで高速アプリ開発
+http://dev.classmethod.jp/server-side/java/springboot/
+
+Sprint Boot
+https://github.com/spring-projects/spring-boot
+
+🍺ソース
+
+🍺NetBeansで任意のMavenタスク実行
+
+- プロジェクト一覧からpom.xmlを右クリック
+- "Mavenの実行" - "ゴール" をクリック
+- "Mavenの実行"ダイアログの"ゴール"テキストボックスに、ターゲット名を入力して、OKボタンをクリック
+
+※"spring-boot:run" NetBeans上でサーバ起動
+※"package" 依存性含めてjarを作成。
+
+🍺コマンドラインからjarで起動
+% java -jar NetBeansProjects/SpringBootTest/target/SpringBootTest-1.0-SNAPSHOT.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.2.0.RELEASE)
+
+
+🍺Spring Boot バグ
+古いバージョン（少なくとも1.1.0以前）には、Ctrl-Cでサーバが停止しないバグがあるらしい。
+ClassMethodのサンプルは、Spring Boot の1.0.2を使っているので、バグを踏む。
+pom.xmlに最新のバージョンを指定すること。
+
+🍺Spring Boot デバッグ
+
+http://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/run-debug.html
+
+<build>タグ以下の<plugin>タグの直下に以下を追加する。
+
+<configuration>
+    <jvmArguments>
+        -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+    </jvmArguments>
+</configuration>
+
+または、以下のコマンドで起動する
+
+mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
+
+
